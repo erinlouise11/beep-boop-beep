@@ -13,9 +13,261 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
-  <widget class="QStatusBar" name="statusbar"/>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(129, 188, 184);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTableView" name="tvLikedNames">
+    <property name="geometry">
+     <rect>
+      <x>515</x>
+      <y>281</y>
+      <width>251</width>
+      <height>261</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QWidget" name="wGetName" native="true">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>200</y>
+      <width>291</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(170, 85, 255);</string>
+    </property>
+    <widget class="QLabel" name="lblMakeSelection">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>241</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+font: 18pt &quot;Arial Rounded MT Bold&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Make Your Selection</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnGo">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>140</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+font: 16pt &quot;Arial Rounded MT Bold&quot;;
+background-color: rgb(255, 170, 255);</string>
+     </property>
+     <property name="text">
+      <string>GO</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnPrev">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>230</y>
+       <width>61</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+font: 16pt &quot;Arial Rounded MT Bold&quot;;</string>
+     </property>
+     <property name="text">
+      <string>&lt;&lt;</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="leResult">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>190</y>
+       <width>211</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Arial Rounded MT Bold&quot;;
+border-color: rgb(255, 170, 255);</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnNext">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>230</y>
+       <width>61</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 16pt &quot;Arial Rounded MT Bold&quot;;
+color: rgb(255, 255, 255);
+background-color: rgb(255, 170, 255);</string>
+     </property>
+     <property name="text">
+      <string>&gt;&gt;</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnFavorite">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>230</y>
+       <width>71</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+font: 16pt &quot;Arial Rounded MT Bold&quot;;
+border-color: rgb(255, 170, 255);
+background-color: rgb(255, 170, 255);</string>
+     </property>
+     <property name="text">
+      <string>♥</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>61</y>
+       <width>215</width>
+       <height>72</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="1" column="0">
+       <widget class="QLabel" name="lblWordTypes">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 12pt &quot;Arial Rounded MT Bold&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Word types</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QLabel" name="lblNumberWords">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 12pt &quot;Arial Rounded MT Bold&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Number of words</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="lblWordTypes_2">
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+font: 12pt &quot;Arial Rounded MT Bold&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Profanity</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1" colspan="2">
+       <widget class="QComboBox" name="cbbTypes">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 170, 255);
+border-color: rgb(255, 170, 255);</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>With Adjectives</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>With Verbs</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>With Both</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QComboBox" name="cbbNumber">
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QRadioButton" name="radioButton">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <zorder>lblMakeSelection</zorder>
+    <zorder>lblNumberWords</zorder>
+    <zorder>spinBox</zorder>
+    <zorder>lblWordTypes</zorder>
+    <zorder>cbbTypes</zorder>
+    <zorder>btnPrev</zorder>
+    <zorder>leResult</zorder>
+    <zorder>btnNext</zorder>
+    <zorder>btnFavorite</zorder>
+    <zorder>btnGo</zorder>
+    <zorder>lblWordTypes_2</zorder>
+    <zorder>radioButton</zorder>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
