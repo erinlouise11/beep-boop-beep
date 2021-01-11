@@ -14,24 +14,14 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(129, 188, 184);</string>
+   <string notr="true">background-color: rgb(229, 205, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTableView" name="tvLikedNames">
-    <property name="geometry">
-     <rect>
-      <x>515</x>
-      <y>281</y>
-      <width>251</width>
-      <height>261</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QWidget" name="wGetName" native="true">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>200</y>
+      <x>240</x>
+      <y>130</y>
       <width>291</width>
       <height>271</height>
      </rect>
@@ -61,7 +51,7 @@ font: 18pt &quot;Arial Rounded MT Bold&quot;;</string>
       <rect>
        <x>110</x>
        <y>140</y>
-       <width>71</width>
+       <width>81</width>
        <height>31</height>
       </rect>
      </property>
@@ -74,7 +64,7 @@ background-color: rgb(255, 170, 255);</string>
       <string>GO</string>
      </property>
      <property name="flat">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="btnPrev">
@@ -88,13 +78,14 @@ background-color: rgb(255, 170, 255);</string>
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(255, 170, 255);
 font: 16pt &quot;Arial Rounded MT Bold&quot;;</string>
      </property>
      <property name="text">
       <string>&lt;&lt;</string>
      </property>
      <property name="flat">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
     </widget>
     <widget class="QLineEdit" name="leResult">
@@ -108,7 +99,7 @@ font: 16pt &quot;Arial Rounded MT Bold&quot;;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
-font: 14pt &quot;Arial Rounded MT Bold&quot;;
+font: 12pt &quot;Arial Rounded MT Bold&quot;;
 border-color: rgb(255, 170, 255);</string>
      </property>
     </widget>
@@ -130,15 +121,15 @@ background-color: rgb(255, 170, 255);</string>
       <string>&gt;&gt;</string>
      </property>
      <property name="flat">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="btnFavorite">
      <property name="geometry">
       <rect>
-       <x>110</x>
+       <x>120</x>
        <y>230</y>
-       <width>71</width>
+       <width>51</width>
        <height>23</height>
       </rect>
      </property>
@@ -152,10 +143,10 @@ background-color: rgb(255, 170, 255);</string>
       <string>♥</string>
      </property>
      <property name="flat">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>40</x>
@@ -202,6 +193,8 @@ font: 12pt &quot;Arial Rounded MT Bold&quot;;</string>
        <widget class="QComboBox" name="cbbTypes">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(255, 170, 255);
+color: rgb(97, 97, 97);
+font: 8pt &quot;Arial Rounded MT Bold&quot;;
 border-color: rgb(255, 170, 255);</string>
         </property>
         <item>
@@ -223,6 +216,11 @@ border-color: rgb(255, 170, 255);</string>
       </item>
       <item row="0" column="2">
        <widget class="QComboBox" name="cbbNumber">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 170, 255);
+color: rgb(90, 90, 90);
+font: 8pt &quot;Arial Rounded MT Bold&quot;;</string>
+        </property>
         <item>
          <property name="text">
           <string>2</string>
@@ -237,6 +235,9 @@ border-color: rgb(255, 170, 255);</string>
       </item>
       <item row="2" column="2">
        <widget class="QRadioButton" name="radioButton">
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -244,18 +245,13 @@ border-color: rgb(255, 170, 255);</string>
       </item>
      </layout>
     </widget>
+    <zorder>layoutWidget</zorder>
     <zorder>lblMakeSelection</zorder>
-    <zorder>lblNumberWords</zorder>
-    <zorder>spinBox</zorder>
-    <zorder>lblWordTypes</zorder>
-    <zorder>cbbTypes</zorder>
     <zorder>btnPrev</zorder>
     <zorder>leResult</zorder>
     <zorder>btnNext</zorder>
     <zorder>btnFavorite</zorder>
     <zorder>btnGo</zorder>
-    <zorder>lblWordTypes_2</zorder>
-    <zorder>radioButton</zorder>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

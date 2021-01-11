@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QVector>
+#include <QString>
+#include <QRandomGenerator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,8 +17,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    int getRandomInt(int);
+    QString generateName();
+    void favorite(QString);
+    void removeFavorite(QString);
 
 private:
     Ui::MainWindow *ui;
+    QVector<QString> adjectives, nouns, verbs, favorites;
+    QString nameGenerated;
 };
 #endif // MAINWINDOW_H
