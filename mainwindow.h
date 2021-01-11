@@ -19,8 +19,11 @@ public:
     ~MainWindow();
     int getRandomInt(int);
     QString generateName();
-    void favorite(QString);
-    void removeFavorite(QString);
+
+public slots:
+    void displayName();
+//    void favorite(QString);
+//    void removeFavorite(QString);
 
 private:
     Ui::MainWindow *ui;

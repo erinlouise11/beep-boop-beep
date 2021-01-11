@@ -30,12 +30,12 @@ MainWindow::MainWindow(QWidget *parent)
     nouns.push_back("Angel");
     nouns.push_back("Demon");
 
-    nameGenerated = verbs[2] + nouns[4];
+//    nameGenerated = verbs[2] + nouns[4];
 
-    ui->leResult->setText(nameGenerated);
+//    ui->leResult->setText(nameGenerated);
 
-    connect(ui->btnFavorite, SIGNAL(clicked()), this, SLOT(favorite()));
-    connect(ui->btnGo, SIGNAL(clicked()), this, SLOT(generateName()));
+//    connect(ui->btnFavorite, SIGNAL(clicked()), this, SLOT(favorite()));
+    connect(ui->btnGo, SIGNAL(clicked()), this, SLOT(displayName()));
 }
 
 MainWindow::~MainWindow()
@@ -43,10 +43,23 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-int MainWindow::getRandomInt(int n) {
+int MainWindow::getRandomInt(int n){
 
     int rand = QRandomGenerator::global()->bounded(0, n);
 
     return rand;
+}
+
+void MainWindow::displayName(){
+
+    ui->leResult->setText(generateName());
+}
+
+QString MainWindow::generateName(){
+
+    nameGenerated = adjectives[getRandomInt(adjectives.size())] +
+            verbs[getRandomInt(verbs.size())] + nouns[getRandomInt(nouns.size())];
+
+    return nameGenerated;
 }
 
