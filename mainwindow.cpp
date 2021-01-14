@@ -30,10 +30,6 @@ MainWindow::MainWindow(QWidget *parent)
     nouns.push_back("Angel");
     nouns.push_back("Demon");
 
-//    nameGenerated = verbs[2] + nouns[4];
-
-//    ui->leResult->setText(nameGenerated);
-
 //    connect(ui->btnFavorite, SIGNAL(clicked()), this, SLOT(favorite()));
     connect(ui->btnGo, SIGNAL(clicked()), this, SLOT(displayName()));
 }
@@ -50,6 +46,11 @@ int MainWindow::getRandomInt(int n){
     return rand;
 }
 
+int MainWindow::getNameLength(){
+
+    return ui->cbbNumber->currentText().toInt();
+}
+
 void MainWindow::displayName(){
 
     ui->leResult->setText(generateName());
@@ -57,8 +58,17 @@ void MainWindow::displayName(){
 
 QString MainWindow::generateName(){
 
-    nameGenerated = adjectives[getRandomInt(adjectives.size())] +
-            verbs[getRandomInt(verbs.size())] + nouns[getRandomInt(nouns.size())];
+    int nameLength = getNameLength();
+
+    switch(nameLength){
+        case 2:
+            nameGenerated = adjectives[getRandomInt(adjectives.size())] + nouns[getRandomInt(nouns.size())];
+            break;
+        case 3:
+            nameGenerated = adjectives[getRandomInt(adjectives.size())] +
+                    verbs[getRandomInt(verbs.size())] + nouns[getRandomInt(nouns.size())];
+            break;
+    }
 
     return nameGenerated;
 }

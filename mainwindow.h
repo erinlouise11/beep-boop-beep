@@ -19,6 +19,7 @@ public:
     ~MainWindow();
     int getRandomInt(int);
     QString generateName();
+    int getNameLength();
 
 public slots:
     void displayName();
