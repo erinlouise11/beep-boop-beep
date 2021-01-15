@@ -23,20 +23,22 @@ public:
     int getRandomInt(int);
     QString generateName();
     int getNameLength();
+    void addTempNames(QString);
     void closeFile(QFile);
-    void writeFile(QFile, QString);
+    void writeFile(QFile*, QString);
     QString readFile(QFile);
 
 public slots:
     void displayName();
-    void addFavorite(QString);
+    void addFavorite();
     QString getPrevious();
     QString getNext();
 //    void removeFavorite(QString);
 
 private:
     Ui::MainWindow *ui;
-    QVector<QString> adjectives, nouns, verbs, favorites;
+    QVector<QString> adjectives, nouns, verbs, tempNames;
+    QFile *favoritesF, *verbsF, *adjectivesF, *nounsF;
     QString nameGenerated;
 };
 #endif // MAINWINDOW_H

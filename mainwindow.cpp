@@ -30,9 +30,12 @@ MainWindow::MainWindow(QWidget *parent)
     nouns.push_back("Angel");
     nouns.push_back("Demon");
 
-    QFile favoritesF("favorites.txt"), verbsF("verbs.txt"), adjectivesF("adjectives.txt"), nounsF("nouns.txt");
+    favoritesF = new QFile("favorites.txt");
+    verbsF = new QFile("verbs.txt");
+    adjectivesF = new QFile("adjectives.txt");
+    nounsF = new QFile("nouns.txt");
 
-    connect(ui->btnFavorite, SIGNAL(clicked()), this, SLOT(addFavorite(Qstring)));
+    connect(ui->btnFavorite, SIGNAL(clicked()), this, SLOT(addFavorite()));
     connect(ui->btnNext, SIGNAL(clicked()), this, SLOT(getNext()));
     connect(ui->btnPrev, SIGNAL(clicked()), this, SLOT(getPrevious()));
     connect(ui->btnGo, SIGNAL(clicked()), this, SLOT(displayName()));
@@ -74,11 +77,21 @@ QString MainWindow::generateName(){
             break;
     }
 
+    addTempNames(nameGenerated);
+
     return nameGenerated;
 }
 
-void MainWindow::addFavorite(QString s){
+void MainWindow::addTempNames(QString s){
 
+    tempNames.push_back(s);
+
+    return;
+}
+
+void MainWindow::addFavorite(){
+
+    writeFile(favoritesF, ui->leResult->text());
 }
 
 QString MainWindow::getNext(){
@@ -100,20 +113,28 @@ QString MainWindow::getPrevious(){
     return prev;
 }
 
-void MainWindow::writeFile(QFile f, QString s){
+void MainWindow::writeFile(QFile *f, QString s){
 
-    if(!f.exists())
-            qDebug() << f.fileName() << " does not exist";
+    if(!f->exists())
+            qDebug() << f->fileName() << " does not exist";
 
-    if(f.open(QIODevice::ReadOnly | QIODevice::WriteOnly | QIODevice::Text)){
+    if(f->open(QIODevice::ReadOnly | QIODevice::WriteOnly | QIODevice::Text)){
 
-        QTextStream ts(&f);
+        QTextStream ts(f);
+        QString line;
 
         qDebug() << "Writing to file...";
 
         ts << s << endl;
 
-        qDebug() << "Write to file COMPLETE";
+        // checking if the write was successfull
+        do{
+            line = ts.readAll();
+            if(line.contains(s, Qt::CaseInsensitive)){
+                qDebug() << "Write to file COMPLETE";
+                return;
+            }
+        } while(!line.isNull());
     }
 
     else{
@@ -121,6 +142,3 @@ void MainWindow::writeFile(QFile f, QString s){
         return;
     }
 }
-
-
-
