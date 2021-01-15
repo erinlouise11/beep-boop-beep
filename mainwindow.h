@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QString>
+#include <QFile>
+#include <QTextStream>
 #include <QRandomGenerator>
 
 QT_BEGIN_NAMESPACE
@@ -23,7 +25,9 @@ public:
 
 public slots:
     void displayName();
-//    void favorite(QString);
+    void addFavorite(QString);
+    QString getPrevious();
+    QString getNext();
 //    void removeFavorite(QString);
 
 private:

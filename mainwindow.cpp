@@ -30,7 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     nouns.push_back("Angel");
     nouns.push_back("Demon");
 
-//    connect(ui->btnFavorite, SIGNAL(clicked()), this, SLOT(favorite()));
+    connect(ui->btnFavorite, SIGNAL(clicked()), this, SLOT(addFavorite(Qstring)));
+    connect(ui->btnNext, SIGNAL(clicked()), this, SLOT(getNext()));
+    connect(ui->btnPrev, SIGNAL(clicked()), this, SLOT(getPrevious()));
     connect(ui->btnGo, SIGNAL(clicked()), this, SLOT(displayName()));
 }
 
@@ -71,5 +73,28 @@ QString MainWindow::generateName(){
     }
 
     return nameGenerated;
+}
+
+void MainWindow::addFavorite(QString s){
+
+}
+
+QString MainWindow::getNext(){
+
+    QString next;
+
+    //...
+
+    return next;
+
+}
+
+QString MainWindow::getPrevious(){
+
+    QString prev;
+
+    //...
+
+    return prev;
 }
 
