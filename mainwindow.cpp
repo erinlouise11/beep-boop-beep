@@ -30,6 +30,8 @@ MainWindow::MainWindow(QWidget *parent)
     nouns.push_back("Angel");
     nouns.push_back("Demon");
 
+    QFile favoritesF("favorites.txt"), verbsF("verbs.txt"), adjectivesF("adjectives.txt"), nounsF("nouns.txt");
+
     connect(ui->btnFavorite, SIGNAL(clicked()), this, SLOT(addFavorite(Qstring)));
     connect(ui->btnNext, SIGNAL(clicked()), this, SLOT(getNext()));
     connect(ui->btnPrev, SIGNAL(clicked()), this, SLOT(getPrevious()));
@@ -97,4 +99,28 @@ QString MainWindow::getPrevious(){
 
     return prev;
 }
+
+void MainWindow::writeFile(QFile f, QString s){
+
+    if(!f.exists())
+            qDebug() << f.fileName() << " does not exist";
+
+    if(f.open(QIODevice::ReadOnly | QIODevice::WriteOnly | QIODevice::Text)){
+
+        QTextStream ts(&f);
+
+        qDebug() << "Writing to file...";
+
+        ts << s << endl;
+
+        qDebug() << "Write to file COMPLETE";
+    }
+
+    else{
+        qDebug() << "Cannot open file";
+        return;
+    }
+}
+
+
 

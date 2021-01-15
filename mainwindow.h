@@ -7,6 +7,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QRandomGenerator>
+#include <QDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,6 +23,9 @@ public:
     int getRandomInt(int);
     QString generateName();
     int getNameLength();
+    void closeFile(QFile);
+    void writeFile(QFile, QString);
+    QString readFile(QFile);
 
 public slots:
     void displayName();
