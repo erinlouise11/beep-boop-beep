@@ -15,6 +15,9 @@ MainWindow::MainWindow(QWidget *parent)
     adjectives.push_back("Loveable");
     adjectives.push_back("Scary");
     adjectives.push_back("Depressed");
+    adjectives.push_back("Fat");
+    adjectives.push_back("Cute");
+    adjectives.push_back("Tasty");
 
     verbs.push_back("Running");
     verbs.push_back("Fighting");
@@ -22,6 +25,10 @@ MainWindow::MainWindow(QWidget *parent)
     verbs.push_back("Dying");
     verbs.push_back("Charging");
     verbs.push_back("Swimming");
+    verbs.push_back("Quivering");
+    verbs.push_back("Blubbering");
+    verbs.push_back("Dancing");
+    verbs.push_back("Headbanging");
 
     nouns.push_back("Penguin");
     nouns.push_back("Turtle");
@@ -29,11 +36,17 @@ MainWindow::MainWindow(QWidget *parent)
     nouns.push_back("Octopus");
     nouns.push_back("Angel");
     nouns.push_back("Demon");
+    nouns.push_back("Idiot");
+    nouns.push_back("Blob");
+    nouns.push_back("Peanut");
+    nouns.push_back("Derp");
 
-    favoritesF = new QFile("favorites.txt");
-    verbsF = new QFile("verbs.txt");
-    adjectivesF = new QFile("adjectives.txt");
-    nounsF = new QFile("nouns.txt");
+    QString path = "D:/QtOpenSource/Projects/BeepBoopBeep/";
+
+    favoritesF = new QFile(path + "favorites.txt");
+    verbsF = new QFile(path +"verbs.txt");
+    adjectivesF = new QFile(path +"adjectives.txt");
+    nounsF = new QFile(path +"nouns.txt");
 
     connect(ui->btnFavorite, SIGNAL(clicked()), this, SLOT(addFavorite()));
     connect(ui->btnNext, SIGNAL(clicked()), this, SLOT(getNext()));
@@ -41,8 +54,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnGo, SIGNAL(clicked()), this, SLOT(displayName()));
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
 }
 
@@ -61,6 +73,8 @@ int MainWindow::getNameLength(){
 void MainWindow::displayName(){
 
     ui->leResult->setText(generateName());
+
+    return;
 }
 
 QString MainWindow::generateName(){
@@ -92,6 +106,8 @@ void MainWindow::addTempNames(QString s){
 void MainWindow::addFavorite(){
 
     writeFile(favoritesF, ui->leResult->text());
+
+    return;
 }
 
 QString MainWindow::getNext(){
@@ -115,30 +131,46 @@ QString MainWindow::getPrevious(){
 
 void MainWindow::writeFile(QFile *f, QString s){
 
-    if(!f->exists())
-            qDebug() << f->fileName() << " does not exist";
+    if(!f->exists()){
+        qDebug() << f->fileName() << " does not exist";
+        return;
+    }
 
     if(f->open(QIODevice::ReadOnly | QIODevice::WriteOnly | QIODevice::Text)){
 
         QTextStream ts(f);
         QString line;
 
-        qDebug() << "Writing to file...";
+        qDebug() << "Writing...";
 
-        ts << s << endl;
+        ts << s << "\n";
 
-        // checking if the write was successfull
-        do{
-            line = ts.readAll();
-            if(line.contains(s, Qt::CaseInsensitive)){
-                qDebug() << "Write to file COMPLETE";
-                return;
-            }
-        } while(!line.isNull());
+        f->flush();
+
+        qDebug() << "Write COMPLETE";
+
+        f->close();
+
+        return;
+
+//        // checking if the write was successfull
+//        do{
+//            line = ts.readAll();
+//            if(line.contains(s)){
+//                qDebug() << "Write to file COMPLETE";
+//                return;
+//            }
+//            else{
+//                qDebug() << "Write unsuccessfull";
+//                return;
+//            }
+//        } while(!line.isNull());
     }
 
     else{
         qDebug() << "Cannot open file";
         return;
-    }
+    }    
+
+    return;
 }
