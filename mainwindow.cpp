@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     showLikedNames(favoritesF);
 
-    connect(ui->btnFavorite, SIGNAL(clicked()), this, SLOT(addFavorite()));
+    connect(ui->btnFavorite, SIGNAL(clicked()), this, SLOT(likeName()));
     connect(ui->btnNext, SIGNAL(clicked()), this, SLOT(getNext()));
     connect(ui->btnPrev, SIGNAL(clicked()), this, SLOT(getPrevious()));
     connect(ui->btnGo, SIGNAL(clicked()), this, SLOT(displayName()));
@@ -105,30 +105,45 @@ void MainWindow::addTempNames(QString s){
     return;
 }
 
-void MainWindow::addFavorite(){
+void MainWindow::likeName(){
 
     writeFile(favoritesF, ui->leResult->text());
 
     return;
 }
 
-QString MainWindow::getNext(){
+void MainWindow::getNext(){
 
-    QString next;
+    QString current = ui->leResult->text();
+    int i = tempNames.indexOf(current);
 
-    //...
-
-    return next;
-
+    if(i != -1){
+        if(i < tempNames.size() && i != tempNames.size()-1){
+            ui->leResult->setText(tempNames[i+1]);
+        }
+        else if(i == tempNames.size()-1)
+            ui->leResult->setText(current);
+    }
+    else
+        ui->leResult->setText("");
 }
 
-QString MainWindow::getPrevious(){
+void MainWindow::getPrevious(){
 
-    QString prev;
+    QString current = ui->leResult->text();
+    int i = tempNames.indexOf(current);
 
-    //...
+    if(i != -1){
+        if(i > 0){
+            ui->leResult->setText(tempNames[i-1]);
+        }
+        else
+            ui->leResult->setText(current);
+    }
+    else
+        ui->leResult->setText("");
 
-    return prev;
+
 }
 
 void MainWindow::writeFile(QFile *f, QString s){
@@ -140,8 +155,6 @@ void MainWindow::writeFile(QFile *f, QString s){
 
     if(f->open(QIODevice::Append | QIODevice::Text)){
 
-        qDebug() << "File OPEN";
-
         QTextStream ts(f);
 
         qDebug() << "Writing to file";
@@ -151,8 +164,6 @@ void MainWindow::writeFile(QFile *f, QString s){
         qDebug() << "Write COMPLETE";
 
         f->close();
-
-        qDebug() << "File CLOSED";
 
         showLikedNames(f);
 
@@ -175,8 +186,6 @@ void MainWindow::showLikedNames(QFile *f){
     }
 
     if(f->open(QIODevice::ReadOnly)){
-
-        qDebug() << "File open";
 
         QTextStream ts(f);
         QString line = ts.readLine();
@@ -202,8 +211,6 @@ void MainWindow::showLikedNames(QFile *f){
         }
 
         f->close();
-
-        qDebug() << "File closed";
 
         return;
     }

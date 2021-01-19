@@ -1,14 +1,2 @@
-HappyDemon
-LoveableLog
-EnthusiasticBlob
-LonelyFightingTurtle
-FatIdiot
-FatPenguin
-FatAngel
-FatAngel
-FatAngel
-EnthusiasticIdiot
-EnthusiasticIdiot
-EnthusiasticIdiot
-DepressedOctopus
-TastyDyingLog
+LoveableDemon
+TastySwimmingPeanut

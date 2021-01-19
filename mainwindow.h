@@ -30,10 +30,10 @@ public:
 
 public slots:
     void displayName();
-    void addFavorite();
-    QString getPrevious();
-    QString getNext();
-//    void removeFavorite(QString);
+    void likeName();
+    void getPrevious();
+    void getNext();
+//    void removeLikedName(QString);
 
 private:
     Ui::MainWindow *ui;
