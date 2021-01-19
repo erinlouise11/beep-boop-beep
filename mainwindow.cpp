@@ -139,7 +139,6 @@ void MainWindow::writeFile(QFile *f, QString s){
     if(f->open(QIODevice::ReadOnly | QIODevice::Append | QIODevice::Text)){
 
         QTextStream ts(f);
-//        QString line;
 
         qDebug() << "Writing...";
 
@@ -150,19 +149,6 @@ void MainWindow::writeFile(QFile *f, QString s){
         f->close();
 
         return;
-
-//        // checking if the write was successfull
-//        do{
-//            line = ts.readAll();
-//            if(line.contains(s)){
-//                qDebug() << "Write to file COMPLETE";
-//                return;
-//            }
-//            else{
-//                qDebug() << "Write unsuccessfull";
-//                return;
-//            }
-//        } while(!line.isNull());
     }
 
     else{

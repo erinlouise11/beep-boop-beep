@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>762</width>
-    <height>472</height>
+    <height>484</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@ background-color: rgb(255, 185, 255);
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>140</y>
+      <y>150</y>
       <width>321</width>
       <height>271</height>
      </rect>
@@ -236,7 +236,7 @@ font: 8pt &quot;Arial Rounded MT Bold&quot;;</string>
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>10</y>
+      <y>20</y>
       <width>421</width>
       <height>61</height>
      </rect>
@@ -254,7 +254,7 @@ color: rgb(85, 255, 255);
     <property name="geometry">
      <rect>
       <x>240</x>
-      <y>80</y>
+      <y>90</y>
       <width>211</width>
       <height>16</height>
      </rect>
@@ -271,7 +271,7 @@ color: rgb(170, 85, 255);</string>
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>140</y>
+      <y>150</y>
       <width>291</width>
       <height>271</height>
      </rect>
@@ -296,7 +296,7 @@ font: 18pt &quot;Arial Rounded MT Bold&quot;;</string>
       <string>Liked Names</string>
      </property>
     </widget>
-    <widget class="QTableView" name="tvLikedNamesList">
+    <widget class="QListWidget" name="lwLikedNames">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -306,20 +306,12 @@ font: 18pt &quot;Arial Rounded MT Bold&quot;;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(170, 255, 255);</string>
+      <string notr="true">background-color: rgb(170, 255, 255);
+color: rgb(255, 85, 255);
+font: 12pt &quot;Arial Rounded MT Bold&quot;;</string>
      </property>
     </widget>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>762</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
