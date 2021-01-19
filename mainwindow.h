@@ -26,7 +26,7 @@ public:
     void addTempNames(QString);
     void closeFile(QFile);
     void writeFile(QFile*, QString);
-    QString readFile(QFile);
+    void showLikedNames(QFile*);
 
 public slots:
     void displayName();

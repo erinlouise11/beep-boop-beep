@@ -48,6 +48,8 @@ MainWindow::MainWindow(QWidget *parent)
     adjectivesF = new QFile(path +"adjectives.txt");
     nounsF = new QFile(path +"nouns.txt");
 
+    showLikedNames(favoritesF);
+
     connect(ui->btnFavorite, SIGNAL(clicked()), this, SLOT(addFavorite()));
     connect(ui->btnNext, SIGNAL(clicked()), this, SLOT(getNext()));
     connect(ui->btnPrev, SIGNAL(clicked()), this, SLOT(getPrevious()));
@@ -136,17 +138,23 @@ void MainWindow::writeFile(QFile *f, QString s){
         return;
     }
 
-    if(f->open(QIODevice::ReadOnly | QIODevice::Append | QIODevice::Text)){
+    if(f->open(QIODevice::Append | QIODevice::Text)){
+
+        qDebug() << "File OPEN";
 
         QTextStream ts(f);
 
-        qDebug() << "Writing...";
+        qDebug() << "Writing to file";
 
         ts << s << endl;
 
         qDebug() << "Write COMPLETE";
 
         f->close();
+
+        qDebug() << "File CLOSED";
+
+        showLikedNames(f);
 
         return;
     }
@@ -155,6 +163,55 @@ void MainWindow::writeFile(QFile *f, QString s){
         qDebug() << "Cannot open file";
         return;
     }    
+
+    return;
+}
+
+void MainWindow::showLikedNames(QFile *f){
+
+    if(!f->exists()){
+        qDebug() << f->fileName() << " does not exist";
+        return;
+    }
+
+    if(f->open(QIODevice::ReadOnly)){
+
+        qDebug() << "File open";
+
+        QTextStream ts(f);
+        QString line = ts.readLine();
+        bool exists = false;
+
+        while(!line.isNull()){
+
+            for(int i = 0; i < ui->lwLikedNames->count(); i++){
+                if(line == ui->lwLikedNames->item(i)->text()){
+                    exists = true;
+                    break;
+                }
+            }
+
+            if(exists){
+                exists = false;
+                line = ts.readLine();
+            }
+            else{
+                new QListWidgetItem(line, ui->lwLikedNames);
+                line = ts.readLine();
+            }
+        }
+
+        f->close();
+
+        qDebug() << "File closed";
+
+        return;
+    }
+
+    else{
+        qDebug() << "Cannot open file";
+        return;
+    }
 
     return;
 }
