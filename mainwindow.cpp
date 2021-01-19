@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent)
     nouns.push_back("Idiot");
     nouns.push_back("Blob");
     nouns.push_back("Peanut");
-    nouns.push_back("Derp");
+    nouns.push_back("Shoe");
 
     QString path = "D:/QtOpenSource/Projects/BeepBoopBeep/";
 
@@ -136,16 +136,14 @@ void MainWindow::writeFile(QFile *f, QString s){
         return;
     }
 
-    if(f->open(QIODevice::ReadOnly | QIODevice::WriteOnly | QIODevice::Text)){
+    if(f->open(QIODevice::ReadOnly | QIODevice::Append | QIODevice::Text)){
 
         QTextStream ts(f);
-        QString line;
+//        QString line;
 
         qDebug() << "Writing...";
 
-        ts << s << "\n";
-
-        f->flush();
+        ts << s << endl;
 
         qDebug() << "Write COMPLETE";
 

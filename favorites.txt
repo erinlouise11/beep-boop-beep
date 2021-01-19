@@ -1,7 +1,4 @@
-
-FatLog
-Angel
-
-ScaryOctopus
 HappyDemon
 LoveableLog
+EnthusiasticBlob
+LonelyFightingTurtle

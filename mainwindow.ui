@@ -282,9 +282,9 @@ color: rgb(170, 85, 255);</string>
     <widget class="QLabel" name="lblHeartedNames">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>70</x>
        <y>20</y>
-       <width>181</width>
+       <width>161</width>
        <height>21</height>
       </rect>
      </property>
@@ -293,10 +293,10 @@ color: rgb(170, 85, 255);</string>
 font: 18pt &quot;Arial Rounded MT Bold&quot;;</string>
      </property>
      <property name="text">
-      <string>Hearted Names</string>
+      <string>Liked Names</string>
      </property>
     </widget>
-    <widget class="QColumnView" name="cvNameList">
+    <widget class="QTableView" name="tvLikedNamesList">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -306,9 +306,7 @@ font: 18pt &quot;Arial Rounded MT Bold&quot;;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(255, 85, 255);
-font: 10pt &quot;Arial Rounded MT Bold&quot;;
-background-color: rgb(170, 255, 255);</string>
+      <string notr="true">background-color: rgb(170, 255, 255);</string>
      </property>
     </widget>
    </widget>
