@@ -54,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnNext, SIGNAL(clicked()), this, SLOT(getNext()));
     connect(ui->btnPrev, SIGNAL(clicked()), this, SLOT(getPrevious()));
     connect(ui->btnGo, SIGNAL(clicked()), this, SLOT(displayName()));
+    connect(ui->btnRemove, SIGNAL(clicked()), this, SLOT(removeLikedName()));
 }
 
 MainWindow::~MainWindow(){
@@ -142,8 +143,6 @@ void MainWindow::getPrevious(){
     }
     else
         ui->leResult->setText("");
-
-
 }
 
 void MainWindow::writeFile(QFile *f, QString s){
@@ -180,11 +179,6 @@ void MainWindow::writeFile(QFile *f, QString s){
 
 void MainWindow::showLikedNames(QFile *f){
 
-    if(!f->exists()){
-        qDebug() << f->fileName() << " does not exist";
-        return;
-    }
-
     if(f->open(QIODevice::ReadOnly)){
 
         QTextStream ts(f);
@@ -219,6 +213,34 @@ void MainWindow::showLikedNames(QFile *f){
         qDebug() << "Cannot open file";
         return;
     }
+
+    return;
+}
+
+void MainWindow::removeLikedName(){
+
+    if(favoritesF->open(QIODevice::ReadWrite | QIODevice::Text)){
+
+        QTextStream ts(favoritesF);
+        QString newFile, current = ui->lwLikedNames->currentItem()->text();
+
+        while(!ts.atEnd()){
+
+            QString line = ts.readLine();
+
+            if(!line.contains(current)){
+                newFile.append(line + "\n");
+            }
+        }
+
+        favoritesF->resize(0);
+        ts << newFile;
+        favoritesF->close();
+    }
+
+    qDebug() << "Deletion COMPLETE";
+    ui->lwLikedNames->clear();
+    showLikedNames(favoritesF);
 
     return;
 }

@@ -24,7 +24,6 @@ public:
     QString generateName();
     int getNameLength();
     void addTempNames(QString);
-    void closeFile(QFile);
     void writeFile(QFile*, QString);
     void showLikedNames(QFile*);
 
@@ -33,7 +32,7 @@ public slots:
     void likeName();
     void getPrevious();
     void getNext();
-//    void removeLikedName(QString);
+    void removeLikedName();
 
 private:
     Ui::MainWindow *ui;
